@@ -2334,7 +2334,7 @@ class PHPMailer
         return implode('', $mime);
     }
 
-    /**
+    /*
      * Encode a file attachment in requested format.
      * Returns an empty string on failure.
      * @param string $path The full path to the file

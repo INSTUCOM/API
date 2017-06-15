@@ -1,24 +1,30 @@
 <?php
-//include "mainController.php";
-	if(isset($_POST['email'])){
-	$email = $_POST['email'];
+defined('INDEX') or exit("Access denied! Request from an external source");
+ini_set('memory_limit', '512M');
+$options = json_decode(html_entity_decode(isset($_POST['options']) ? $_POST['options'] : null), true);
+if($options == null){
+	die("No options inputed");
+}
+
+
+	if(isset($options['email'])){
+	$email = strtolower($options['email']);
 	}
-	if(isset($_POST['password'])){
-	$password = $_POST['password'];
+	if(isset($options['password'])){
+	$password = $options['password'];
 	}
 	
 	if(empty($email) || empty($password)){
-		header("Location:login?text=empty");
+		die("empty");
 	}
 	else{
-	$s = new Instucom('user_details');
-	//die("me");
-	if($s->login($email,$password)){
-		header("Location:dashboard");
+	Instucom::__construct('');
+	$type = Instucom::get_model()->check_email($email);
+	if(!$type){
+		die(json_encode(["status"=>"incorrect","userid"=>"","data"=>"","type"=>""]));
 	}
-	else{
-		header("Location:login?text=incorrect");
+	$s = new Instucom($type);
+	die($s->login($email,$password));
 	}
-}
 
-?>
+?>	

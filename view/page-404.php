@@ -16,7 +16,7 @@ if(isset($_SESSION['lock'])){
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<title>Home Automation</title>
+		<title><?=TITLE; ?></title>
 		<meta name="description" content="" />
 		<meta name="Author" content="Deewai Inc." />
 
@@ -27,12 +27,12 @@ if(isset($_SESSION['lock'])){
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
 
 		<!-- CORE CSS -->
-		<link href="<?php echo __SERVER_ROOT;    ?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		
 		<!-- THEME CSS -->
-		<link href="<?php echo __SERVER_ROOT;    ?>assets/css/essentials.css" rel="stylesheet" type="text/css" />
-		<link href="<?php echo __SERVER_ROOT;    ?>assets/css/layout.css" rel="stylesheet" type="text/css" />
-		<link href="<?php echo __SERVER_ROOT;    ?>assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+		<link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
 
 	</head>
 	<!--
@@ -191,8 +191,8 @@ if(isset($_SESSION['lock'])){
 	
 		<!-- JAVASCRIPT FILES -->
 		<script type="text/javascript">var plugin_path = 'assets/plugins/';</script>
-		<script type="text/javascript" src="<?php echo __SERVER_ROOT;    ?>assets/plugins/jquery/jquery-2.1.4.min.js"></script>
-		<script type="text/javascript" src="<?php echo __SERVER_ROOT;    ?>assets/js/app.js"></script>
+		<script type="text/javascript" src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="assets/js/app.js"></script>
 
 	</body>
 </html>

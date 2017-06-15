@@ -1,14 +1,5 @@
 <?php
-/*
 
-
-
-*/
-/*
-if(!include("config.php")){
-	include("config.php");
-}
-*/
 require("mainController.php");
 class URL extends Instucom{
 //properties of the class
@@ -27,13 +18,14 @@ private $folder;
 private $mimeType;
 
 
+
 function __construct($url){    
     //set the constants to be used by the class
     $this->page_short_code = __PAGE_SHORT_CODE;
     $this->pages = __PAGES;
     $this->controller_short_code = __CONTROLLER_SHORT_CODE;
     $this->controller_link = __CONTROLLER_LINK;
-    $this->x = 2;       //set the index of the controller in the url
+    $this->x = URI_INDEX;       //set the index of the controller in the url
     $this->y = $this->x + 1;        //set the model to be called
     $this->z = $this->y + 1;  
     $this->mimeType = isset($_GET['mimeType']) ? $_GET['mimeType'] : "json";      
@@ -63,6 +55,9 @@ public function split_url(){
         if($this->mimeType == "text/html"){
 		$this->folder = "./view/";          //setting render folder as view folder
 	    }
+        else if(in_array($this->url_bits[$this->x],$this->page_short_code)){
+            $this->folder = "./view/";          //setting render folder as view folder
+        }
         else $this->folder = "./controller/";       //if view setting render folder as controller folder
         //if a backslash exists at the end of link strip it and load link without backslash
         if(sizeof($this->url_bits) >= 4){
@@ -134,7 +129,18 @@ public function get_page(){
 }//end get_page
 
 public function render(){
+    if(file_exists($this->content)){
     include($this->content);        //render the content
+    }
+    else{
+        foreach ($this->page_short_code as $key => $value) {
+            if("404" == $value){
+                $this->content = "./view/".$this->pages[$key];        //if doesn't exist show error page
+            }
+        }
+        include($this->content);        //render the content
+
+    }
 }
 
 

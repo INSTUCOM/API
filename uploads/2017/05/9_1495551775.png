@@ -1,0 +1,2 @@
+<br />
+<b>Warning</b>:  imagejpeg() expects parameter 1 to be resource, boolean given in <b>/opt/lampp/htdocs/instucom/blogger/controller/post_detailsController.php</b> on line <b>25</b><br />
